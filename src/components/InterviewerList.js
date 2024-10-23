@@ -4,7 +4,16 @@ import "components/InterviewerList.scss";
 
 import InterviewerListItem from "components/InterviewerListItem";
 
+import PropTypes from "prop-types";
+
+// Adding a PropTypes test:
+// Note, this only worked when placed here, above the function.
+InterviewerList.propTypes = {
+  interviewers: PropTypes.array.isRequired
+};
+
 function InterviewerList(props) {
+  // console.log(typeof props.interviewers);
   const interviewers = props.interviewers.map(interviewer => {
     return (
       <InterviewerListItem
@@ -17,6 +26,8 @@ function InterviewerList(props) {
       />
     );
   });
+
+
 
   return (
     <section className="interviewers">

@@ -12,20 +12,19 @@ import { render } from "@testing-library/react";
 /*
   We import the component that we are testing
 */
-import Application from "components/Application";
+import Appointment from "components/Appointment";
 
 /*
   A test that renders a React Component
 */
-
+describe("Appointment", () => {
+  it("Appointment component renders without crashing", () => {
+    render(<Appointment />);
+  });
+});
 
 // Describe is not neccessary but can be used to group more than one test under a certain heading.
 
-describe('Main Application', () => {
-it("Application component renders without crashing", () => {
-  render(<Application />);
-});  
-})
 
 // it("does something it is supposed to do", () => {
 //   // test code here...
