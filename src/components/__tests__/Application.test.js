@@ -1,38 +1,21 @@
-/*
-  We are rendering `<Application />` down below, so we need React.createElement
-*/
 import React from "react";
-
-/*
-  We import our helper functions from the react-testing-library
-  The render function allows us to render Components
-*/
 import { render } from "@testing-library/react";
-
-/*
-  We import the component that we are testing
-*/
 import Application from "components/Application";
+import { fireEvent } from "@testing-library/react";
 
-/*
-  A test that renders a React Component
-*/
+// Describe is not necessary but can be used to group more than one test under a certain heading.
+describe("Main Application", () => {
+  it("Application component renders without crashing", () => {
+    render(<Application />);
+  });
 
+  // Replace the "renders without crashing" test in the src/components/__tests__/Application.test.js file with a more useful test called "defaults to Monday and changes the schedule when a new day is selected".
+  it("defaults to Monday and changes the schedule when a new day is selected", () => {
+    const { queryByText, findByText } = render(<Application />);
 
-// Describe is not neccessary but can be used to group more than one test under a certain heading.
-
-describe('Main Application', () => {
-it("Application component renders without crashing", () => {
-  render(<Application />);
-});  
-})
-
-// it("does something it is supposed to do", () => {
-//   // test code here...
-// });
-// Is the same as:
-// test("does something it is supposed to do", () => {
-//   // test code here...
-// });
-// it and test are the same.
-// to skip a test, you can use xit or test.skip.
+    return findByText("Monday").then(() => {
+      fireEvent.click(queryByText("Tuesday"));
+      expect(queryByText("Leopold Silvers")).toBeInTheDocument();
+    });
+  });
+});
