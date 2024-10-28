@@ -36,8 +36,9 @@ describe("Main Application", () => {
 
     // Waiting for Data to Load:
     await findByText(container, "Archie Cohen");
-    // console.log(prettyDOM(container));
-    
+    // We are loading the MOCK axios data, and waiting for it to find the interview with ARCHIE COHEN to prove that it is working (found in mocks/axios fixture.)
+    console.log(prettyDOM(container));
+
     // This line waits for the text "Archie Cohen" to appear in the DOM.
     // The findByText function is asynchronous and returns a promise that resolves when the specified text is found.
     // This ensures that the data has been loaded and the component is fully rendered before proceeding.
