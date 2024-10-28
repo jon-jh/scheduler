@@ -65,7 +65,7 @@ const fixtures = {
 // Each endpoint returns a response object that mimics the structure of a real axios response, including status, statusText, and data.
 
 export default {
-  // Set the base URL just incase. 
+  // Set the base URL just in case.
   defaults: {
     baseURL: "",
   },
@@ -92,6 +92,28 @@ export default {
         status: 200,
         statusText: "OK",
         data: fixtures.interviewers,
+      });
+    }
+  }),
+
+  // Mocking axios.put
+  put: jest.fn((url, data) => {
+    if (url.startsWith("/api/appointments/")) {
+      return Promise.resolve({
+        status: 204,
+        statusText: "No Content",
+        data: {},
+      });
+    }
+  }),
+
+  // Mocking axios.delete
+  delete: jest.fn((url) => {
+    if (url.startsWith("/api/appointments/")) {
+      return Promise.resolve({
+        status: 204,
+        statusText: "No Content",
+        data: {},
       });
     }
   }),
